@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+
+<head>
+
+    <meta charset="UTF-8">
+    <link href="https://fonts.googleapis.com/css2?family=Krona+One&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="index-style.css">
+
+    <title>Blog</title>
+</head>
+<body>
+        <!-- The core Firebase JS SDK is always required and must be listed first -->
+        <script src="https://www.gstatic.com/firebasejs/7.16.0/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/7.16.0/firebase-database.js"></script>
+        <script src="app.js"></script>
+<header>
+<div class="topnav" id="topnav">
+    <div class="bar-box" id="top-section">
+        <img src="https://media.tenor.com/images/53ed3f69d8af8e1fb7b0025a97452e38/tenor.gif" alt="" id="doge">
+        <h1 id="page-name">ZChan</h1>
+    </div>
+    <a class="main-return" onclick="returnToMain()">Main</a>
+    <a class="main-return" onclick="newEntry()">New</a>
+    <a class="main-return" href="#home">About</a>
+</div>
+</header>
+
+<div class="content" id="content">
+    <div id="post-container"></div>
+</div>
+
+<div class="card" id="card">
+    <h1 id="title">New blog entry...</h1>
+    <input type="text" class="card-title" id="card-title" placeholder="Title">
+    <input type="text" class="card-author" id="card-author" placeholder="Author">
+    <textarea placeholder="Text" class="card-intext" id="card-intext" row="8"></textarea>
+    <button class="send-button" onclick="post_blog()">Submit</button>
+</div>
+
+
+
+</body>
+</html>
