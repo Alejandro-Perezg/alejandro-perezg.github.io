@@ -12,7 +12,7 @@ var firebaseConfig = {
 var firebase;
 firebase.initializeApp(firebaseConfig);
 
-//generate hash id
+//generate hash id for unique identifier on firebase
 function uuidv4() {
     return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
     var r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);
@@ -20,12 +20,15 @@ function uuidv4() {
     });
     }
 
+//displays new  entry on blog
+
 function newEntry(){
     document.getElementById("card").style.display = "grid";
     document.getElementById("topnav").style.display = "block";
     document.getElementById("content").style.display = "none";
 };
 
+//returns to main, shows entries
 function returnToMain(){
     get_data();
     document.getElementById("topnav").style.display = "block";
@@ -33,7 +36,7 @@ function returnToMain(){
     document.getElementById("content").style.display = "grid";
 
 };
-
+//post and get functions for firebase
 function post_blog(){
     var blog ={
         title: document.getElementById("card-title").value,
@@ -66,10 +69,12 @@ function get_data() {
                     <\div>`;
                 }
             }
-
-
         })
     })
 }
+
+
+// TODO: implementar delete
+
 
 get_data();
