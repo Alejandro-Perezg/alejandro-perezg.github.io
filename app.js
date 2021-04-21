@@ -74,7 +74,19 @@ function get_data() {
 }
 
 
-// TODO: implementar delete
+// delete protoipo, se le asignaran los valores necesarios esta semana
+
+function delete_unit(id) {
+    var adaRef = firebase.database().ref('blog/'+id);
+    adaRef.remove()
+        .then(function () {
+            console.log("Remove succeeded.")
+        })
+        .catch(function (error) {
+            console.log("Remove failed: " + error.message)
+        });
+    get_data()
+}
 
 
 get_data();
