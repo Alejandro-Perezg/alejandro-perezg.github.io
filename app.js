@@ -34,10 +34,17 @@ function returnToMain(){
     document.getElementById("topnav").style.display = "block";
     document.getElementById("card").style.display = "none";
     document.getElementById("content").style.display = "grid";
-
 };
+//shows to-delete data
+function showToDelete(){
+    displayToDelete();
+    document.getElementById("topnav").style.display = "block";
+    document.getElementById("card").style.display = "none";
+    document.getElementById("content").style.display = "grid";
+}
 //post and get functions for firebase
 function post_blog(){
+    get_data()
     var blog ={
         title: document.getElementById("card-title").value,
         author: document.getElementById("card-author").value,
@@ -48,6 +55,7 @@ function post_blog(){
     document.getElementById("card-title").value=""
     document.getElementById("card-intext").value=""
 
+    
 };
 
 function get_data() {
@@ -72,12 +80,35 @@ function get_data() {
         })
     })
 }
+function displayToDelete(){
+    firebase.database().ref("/").once("value", function (database) {
+        database.forEach(function (content) {
+            var posts = content.val()
+            var results = document.getElementById('content');
+            if (results) {
+                results.innerHTML = "";
+                for (var id in posts) {
+                    tmp = id.toString()
+                    console.log(posts)
+                    //Loop through the object to get each objects data
+                    results.innerHTML +=
+                    `<div class="post-container" id="post-container">
+                    <button class="less-product" onclick="delete_unit('${tmp}')">-</button>
+                    <p id="post-author">${posts[id].author.toUpperCase().bold()}<\p>
+                    <p id="post-text">${posts[id].text}<\p>
+                    <p id="post-title">${posts[id].title.toUpperCase().bold()}<\p>
+                    <\div>`;
+                }
+            }
+        })
+    })
+}
 
-
-// delete protoipo, se le asignaran los valores necesarios esta semana
+// Delete implementado
 
 function delete_unit(id) {
     var adaRef = firebase.database().ref('blog/'+id);
+   
     adaRef.remove()
         .then(function () {
             console.log("Remove succeeded.")
@@ -86,7 +117,8 @@ function delete_unit(id) {
             console.log("Remove failed: " + error.message)
         });
     get_data()
-}
+    }
+
 
 
 get_data();
