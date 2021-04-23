@@ -116,7 +116,7 @@ function delete_unit(id) {
         .catch(function (error) {
             console.log("Remove failed: " + error.message)
         });
-    get_data()
+    
     }
 
 
