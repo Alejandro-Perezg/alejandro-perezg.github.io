@@ -104,6 +104,35 @@ function displayToDelete(){
     })
 }
 
+//Search implementado
+
+function showSearch(){
+    document.getElementById("cardSearch").style.display = "none";
+}
+
+function search(value){
+    firebase.database().ref("/").once("value", function (database) {
+        database.forEach(function (content) {
+            var posts = content.val()
+            var results = document.getElementById('content');
+            if (results) {
+                results.innerHTML = "";
+                for (value in posts) {
+                    tmp = value.toString()
+                    console.log(posts)
+                    //Loop through the object to get each objects data
+                    results.innerHTML +=
+                        `<div class="post-container" id="post-container">
+                    <p id="post-author">${posts[value].author.toUpperCase().bold()}<\p>
+                    <p id="post-text">${posts[value].text}<\p>
+                    <p id="post-title">${posts[value].title.toUpperCase().bold()}<\p>
+                    <\div>`;
+                }
+            }
+        })
+    })
+}
+
 // Delete implementado
 
 function delete_unit(id) {

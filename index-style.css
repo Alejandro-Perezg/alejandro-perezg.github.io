@@ -3,7 +3,7 @@ body {
 }
 .card{
     display: none;
-    background-color: yellow;
+    background-color: dodgerblue;
     width: 50%;
     height: 70%;
     margin: auto;
@@ -18,7 +18,7 @@ body {
      "button button";
 }
 .post-container{
-    background-color: yellow;
+    background-color: navajowhite;
     width: 50%;
     height: 70%;
     margin: auto;
@@ -94,7 +94,7 @@ input, textarea{
     margin: 5px;
     padding: 3px;
     padding-bottom: 5px;
-    background-color: yellow ;
+    background-color: navajowhite ;
     color: black;
     border: 3px solid black;
 }
@@ -117,6 +117,13 @@ input, textarea{
     grid-area: intext;
     border-radius: 10px;
     height: 170px;
+}
+
+.cardSearch{
+    grid-area: title;
+    border-radius: 10px;
+    padding-bottom: 15px;
+
 }
 
 .send-button{
